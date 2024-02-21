@@ -38,7 +38,7 @@ let breaks = [0, 20, 40, 60, 80, Infinity];
 
 const rain_dist_color = (d) => {
   for (let i = 0; i < breaks.length; i++) {
-    if (d > breaks[i] && d < breaks[i + 1]) {
+    if (d >= breaks[i] && d < breaks[i + 1]) {
       return colors[i];
     }
   }
@@ -74,7 +74,7 @@ fetch("data/kenya_rainfall_distribution.geojson")
 // Create legend entries
 let legendEntries = [];
 for (let i = 0; i < colors.length; i++) {
-  let label = (i === 0 ? ">= " : "> ") + breaks[i];
+  let label = (i === 0 ? "> " : "> ") + breaks[i];
   legendEntries.push({
     label: label,
     type: "rectangle",
